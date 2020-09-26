@@ -1,17 +1,30 @@
 package ru.stqa.pft.sandbox;
 
 public class Point {
-  double x;
-  double  y;
+    public static void main(String[] args) {
 
-  public Point(double x, double y){
-    this.x =x;
+
+    Point a = new Point(3, 7);
+    Point b = new Point(4, 8);
+      System.out.println(a.distance(b));
+
+
+  }
+  double x;
+  double y;
+
+  public Point(double x, double y) {
+    this.x = x;
     this.y = y;
   }
 
-  public double distance(Point a, Point b){
-    return Math.sqrt(Math.pow((b.x-a.x),2) + Math.pow((b.y-a.y),2));
+    public double distance(Point a){
+
+       return  Math.sqrt(Math.pow((this.x-a.x),2) + Math.pow((this.y-a.y),2));
 
   }
 
+
 }
+
+
