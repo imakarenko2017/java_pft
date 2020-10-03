@@ -20,7 +20,7 @@ public class GroupHelper extends HelperBase {
 
   }
   public void gotoGroupPage(String groups) {
-    click(By.linkText(groups));
+    click(By.linkText("groups"));
   }
 
   public void submitGroupCreation(String submit) {
@@ -37,5 +37,13 @@ public class GroupHelper extends HelperBase {
 
   public void SelectGroup(By name) {
     click(By.name("selected[]"));
+  }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }
