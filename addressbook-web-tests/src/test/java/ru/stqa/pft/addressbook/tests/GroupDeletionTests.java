@@ -8,10 +8,10 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void TestGroupDeletion() throws Exception {
-    app.gotoGroupPage("groups");
+    app.groupHelper.gotoGroupPage("groups");
     app.groupHelper.SelectGroup(By.name("selected[]"));
     app.groupHelper.DeleteSelectedGroups(By.xpath("(//input[@name='delete'])[2]"));
-    app.gotoGroupPage("groups");
+    app.groupHelper.gotoGroupPage("groups");
 
   }
 
