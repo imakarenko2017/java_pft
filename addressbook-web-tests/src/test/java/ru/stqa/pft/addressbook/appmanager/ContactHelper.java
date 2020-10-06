@@ -105,6 +105,10 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
+  public void editFirstContact(){
+    wd.findElement(By.xpath("//img[@alt='Edit']")).click();
+  }
+
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
     wd.quit();
@@ -131,11 +135,11 @@ public class ContactHelper extends HelperBase {
 
 
   public void ModifyContactForm() {
-    wd.findElement(By.xpath("//input[@name='update'])[2]")).click();
+    wd.findElement(By.xpath("//input[@name='update'][2]")).click();
   }
 
   public void selectFirstContact() {
-    wd.findElementById("1");
+    wd.findElement(By.name("selected[]")).click();
   }
 
   public void deleteContact() {
