@@ -18,9 +18,7 @@ public class GroupHelper extends HelperBase {
     submitGroupCreation("group_name");
 
   }
-  public void gotoGroupPage(String groups) {
-    click(By.linkText("groups"));
-  }
+
 
   public void submitGroupCreation(String submit) {
     click(By.name(submit));

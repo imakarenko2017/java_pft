@@ -188,4 +188,8 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
     wd.switchTo().alert().accept();
   }
+
+  public void createContact() {
+    wd.findElement(By.linkText("add new")).click();
+  }
 }
