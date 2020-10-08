@@ -15,20 +15,20 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_header"),groupData.getHeader());
     type(By.name("group_footer"),groupData.getFooter());
 
-    submitGroupCreation("group_name");
+
 
   }
 
 
-  public void submitGroupCreation(String submit) {
-    click(By.name(submit));
+  public void submitGroupCreation() {
+    click(By.name("submit"));
   }
 
   public void initGroupCreation(String s) {
     click(By.xpath("//input[@name='new']"));
   }
 
-  public void DeleteSelectedGroups(By xpath) {
+  public void DeleteSelectedGroups() {
     click(By.name("delete"));
   }
 
@@ -40,7 +40,28 @@ public class GroupHelper extends HelperBase {
     click(By.name("edit"));
   }
 
+  public void gotoGroupPage(){
+
+      if (isElementPresent(By.tagName("h1"))
+              && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+              && isElementPresent(By.name("new"))){
+        return;
+      }
+      click(By.linkText("groups"));
+      }
+
   public void submitGroupModification() {
     click(By.name("update"));
+  }
+
+  public void createGroup(GroupData group) {
+    initGroupCreation("new");
+    fillGroupFrom(group);
+    submitGroupCreation();
+    gotoGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
