@@ -1,26 +1,90 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    wd = new FirefoxDriver();
+    wd = new WebDriver() {
+      @Override
+      public void get(String url) {
+
+      }
+
+      @Override
+      public String getCurrentUrl() {
+        return null;
+      }
+
+      @Override
+      public String getTitle() {
+        return null;
+      }
+
+      @Override
+      public List<WebElement> findElements(By by) {
+        return null;
+      }
+
+      @Override
+      public WebElement findElement(By by) {
+        return null;
+      }
+
+      @Override
+      public String getPageSource() {
+        return null;
+      }
+
+      @Override
+      public void close() {
+
+      }
+
+      @Override
+      public void quit() {
+
+      }
+
+      @Override
+      public Set<String> getWindowHandles() {
+        return null;
+      }
+
+      @Override
+      public String getWindowHandle() {
+        return null;
+      }
+
+      @Override
+      public TargetLocator switchTo() {
+        return null;
+      }
+
+      @Override
+      public Navigation navigate() {
+        return null;
+      }
+
+      @Override
+      public Options manage() {
+        return null;
+      }
+    };
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
