@@ -12,10 +12,9 @@ public class GroupHelper extends HelperBase {
 
   public void fillGroupFrom(GroupData groupData) {
     type(By.name("group_name"),groupData.getName());
+    type(By.name("group_header"),groupData.getHeader());
+    type(By.name("group_footer"),groupData.getFooter());
 
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     submitGroupCreation("group_name");
 
   }
