@@ -10,7 +10,7 @@ public class GroupModificationTests extends TestBase {
   public void testGroupModification()
   {
 
-    app.groupHelper.gotoGroupPage();
+    app.navigationHelper.gotoGroupPage();
     if (!app.groupHelper.isThereAGroup()) {
       app.groupHelper.createGroup(new GroupData("test1",null,null));
     }
@@ -18,6 +18,6 @@ public class GroupModificationTests extends TestBase {
     app.groupHelper.initGroupModification();
     app.groupHelper.fillGroupFrom(new GroupData("2323","2323","234234"));
     app.groupHelper.submitGroupModification();
-    app.groupHelper.gotoGroupPage();
+    app.navigationHelper.gotoGroupPage();
   }
 }

@@ -19,4 +19,13 @@ if (isElementPresent(By.id("maintable"))){
     click(By.linkText("home"));
   }
   }
+
+  public void gotoGroupPage(){
+    if (isElementPresent(By.tagName("h1")) &&
+            wd.findElement(By.tagName("h1")).equals("Groups")
+      && isElementPresent(By.name("new")) ){
+      return;
+    }
+    click(By.linkText("groups"));
+  }
 }

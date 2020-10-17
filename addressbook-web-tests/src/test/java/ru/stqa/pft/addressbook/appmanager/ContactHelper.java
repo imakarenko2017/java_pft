@@ -189,7 +189,15 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact() {
+  public void createContact(ContactData contactData) {
     wd.findElement(By.linkText("add new")).click();
+    fillContactForm(contactData,true);
+    submitContactForm();
+    returnToHomePage();
+
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
