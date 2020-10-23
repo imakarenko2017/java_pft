@@ -1,9 +1,10 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -14,12 +15,12 @@ public class GroupDeletionTests extends TestBase {
     if (!app.groupHelper.isThereAGroup()) {
       app.groupHelper.createGroup(new GroupData("test1",null,"test1"));
     }
-    int before = app.groupHelper.getGroupCount();
-    app.groupHelper.SelectGroup(By.name("selected[]"));
+    List<GroupData> before = app.groupHelper.getGroupList();
+    app.groupHelper.selectGroup(before.size());
     app.groupHelper.DeleteSelectedGroups();
     app.groupHelper.gotoGroupPage();
-    int after = app.groupHelper.getGroupCount();
-    Assert.assertEquals(after,before-1);
+    List<GroupData> after = app.groupHelper.getGroupList();
+    Assert.assertEquals(after.size(),before.size()-1);
 
   }
 
