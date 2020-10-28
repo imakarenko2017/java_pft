@@ -1,12 +1,17 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -200,4 +205,18 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
+    for (WebElement element : elements){
+      //int id = Integer.parseInt((element.findElement(By.tagName("input")).getAttribute("value")));
+      String first_name = element.findElement(By.xpath(".//td[3]")).getText();
+      String last_name = element.findElement(By.xpath(".//td[2]")).getText();
+      ContactData contact = new ContactData(first_name,null,last_name,null,null,null,null,null,null,null,null,null);
+      contacts.add(contact);
+    }
+    return  contacts;
+  }
+
 }
