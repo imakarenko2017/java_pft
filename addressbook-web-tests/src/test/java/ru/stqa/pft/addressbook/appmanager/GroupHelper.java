@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -86,5 +85,13 @@ public class GroupHelper extends HelperBase {
      groups.add(group);
     }
     return  groups;
+  }
+
+  public void modifyGroup(GroupData group, int index) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupFrom(group);
+    submitGroupModification();
+    gotoGroupPage();
   }
 }
