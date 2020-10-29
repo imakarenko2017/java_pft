@@ -52,6 +52,14 @@ public class ApplicationManager {
     wd.quit();
   }
 
+  public GroupHelper group(){
+    return groupHelper;
+  }
+
+  public NavigationHelper goTo(){
+    return navigationHelper;
+  }
+
   public boolean isElementPresent(By by) {
     try {
       wd.findElement(by);

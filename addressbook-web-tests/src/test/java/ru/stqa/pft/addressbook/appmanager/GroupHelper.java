@@ -15,10 +15,9 @@ public class GroupHelper extends HelperBase {
   }
 
   public void fillGroupFrom(GroupData groupData) {
-    type(By.name("group_name"),groupData.getName());
-    type(By.name("group_header"),groupData.getHeader());
-    type(By.name("group_footer"),groupData.getFooter());
-
+    type(By.name("group_name"), groupData.getName());
+    type(By.name("group_header"), groupData.getHeader());
+    type(By.name("group_footer"), groupData.getFooter());
 
 
   }
@@ -45,21 +44,21 @@ public class GroupHelper extends HelperBase {
     click(By.name("edit"));
   }
 
-  public void gotoGroupPage(){
+  public void gotoGroupPage() {
 
-      if (isElementPresent(By.tagName("h1"))
-              && wd.findElement(By.tagName("h1")).getText().equals("Groups")
-              && isElementPresent(By.name("new"))){
-        return;
-      }
-      click(By.linkText("groups"));
-      }
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
+    click(By.linkText("groups"));
+  }
 
   public void submitGroupModification() {
     click(By.name("update"));
   }
 
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation("new");
     fillGroupFrom(group);
     submitGroupCreation();
@@ -75,23 +74,29 @@ public class GroupHelper extends HelperBase {
 
   }
 
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element : elements){
-     String name = element.getText();
-     int id = Integer.parseInt((element.findElement(By.tagName("input")).getAttribute("value")));
-     GroupData group = new GroupData(id,name,null,null);
-     groups.add(group);
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt((element.findElement(By.tagName("input")).getAttribute("value")));
+      GroupData group = new GroupData(id, name, null, null);
+      groups.add(group);
     }
-    return  groups;
+    return groups;
   }
 
-  public void modifyGroup(GroupData group, int index) {
+  public void modify(GroupData group, int index) {
     selectGroup(index);
     initGroupModification();
     fillGroupFrom(group);
     submitGroupModification();
+    gotoGroupPage();
+  }
+
+  public void delete(int ind) {
+    selectGroup(ind);
+    DeleteSelectedGroups();
     gotoGroupPage();
   }
 }
