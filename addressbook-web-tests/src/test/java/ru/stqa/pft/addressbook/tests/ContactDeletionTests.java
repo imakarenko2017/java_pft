@@ -23,8 +23,9 @@ public class ContactDeletionTests extends TestBase {
     //comparing size
     Assert.assertEquals(after.size(),before.size()-1);
     //comparing lists
-    before.remove(before.size()-1);
+
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId()) ;
+    before.remove(byId);
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before,after);
